@@ -14,7 +14,6 @@ RUN yum remove python34-devel.x86_64 libxml2-devel.x86_64 libxslt-devel.x86_64 g
 ADD 99-zinstallID.json /etc/bzt.d/
 ADD 90-artifacts-dir.json /etc/bzt.d/
 ADD 90-no-console.json /etc/bzt.d/
-ADD docker-entrypoint.sh /
 
 RUN bzt -o settings.default-executor=jmeter -o execution.scenario.requests.0=http://localhost/ \
         -o execution.iterations=1 -o execution.hold-for=1 -o execution.throughput=1
