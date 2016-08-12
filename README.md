@@ -20,11 +20,11 @@ from that directory on the code
 
 ### Volumes
 
-* `/code` - This is where the blazmeter tests are mounted and is also the WORKDIR
+* `/bzt` - This is where the blazmeter tests are mounted and is also the WORKDIR
 
 ### Usage
 
-docker run -v "${PWD}":/code quay.io/ukhomeofficedigital/taurus:0.8.3 /code/test.yml
+docker run -v "${PWD}":/bzt quay.io/ukhomeofficedigital/taurus:0.8.3 /code/test.yml
 
 ## Contributing
 
