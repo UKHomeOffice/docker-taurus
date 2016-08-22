@@ -24,7 +24,7 @@ from that directory on the code
 
 ### Usage
 
-docker run -v "${PWD}":/bzt quay.io/ukhomeofficedigital/taurus:v0.8.3 /code/test.yml
+docker run -v "${PWD}":/bzt quay.io/ukhomeofficedigital/taurus:v0.8.3
 
 ## Contributing
 
