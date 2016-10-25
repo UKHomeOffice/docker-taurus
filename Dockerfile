@@ -1,10 +1,10 @@
 FROM quay.io/ukhomeofficedigital/python:v3.4.3
 MAINTAINER Jon Shanks <jon.shanks@digital.homeoffice.gov.uk>
 
-ENV TAURUS_VERSION 0.8.3
+ENV TAURUS_VERSION 1.7.2
 
 RUN yum install yum-plugin-remove-with-leaves -y && \
-    yum install java-1.7.0-openjdk-headless.x86_64 python34-devel.x86_64 libxml2-devel.x86_64 \
+    yum install java-1.8.0-openjdk-headless.x86_64 python34-devel.x86_64 libxml2-devel.x86_64 \
                 libxslt-devel.x86_64 zlib.x86_64 gcc.x86_64 -y
 
 RUN pip install bzt
