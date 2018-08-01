@@ -1,7 +1,7 @@
 FROM quay.io/ukhomeofficedigital/python:v3.4.3
 MAINTAINER Jon Shanks <jon.shanks@digital.homeoffice.gov.uk>
 
-ENV TAURUS_VERSION 1.7.2
+ENV TAURUS_VERSION 1.12.1
 
 RUN yum install yum-plugin-remove-with-leaves -y && \
     yum install java-1.8.0-openjdk-headless.x86_64 python34-devel.x86_64 libxml2-devel.x86_64 \

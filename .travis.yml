@@ -1,8 +1,0 @@
-sudo: required
-
-services:
-  - docker
-
-script:
-  - docker build -t quay.io/ukhomeofficedigital/taurus:travis .
-  - docker rmi quay.io/ukhomeofficedigital/taurus:travis 
