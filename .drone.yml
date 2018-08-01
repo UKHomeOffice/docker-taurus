@@ -1,39 +1,40 @@
 ---
 pipeline:
-  build_image:
+  
+  my-build:
     image: docker:18.03
     environment:
       - DOCKER_HOST=tcp://172.17.0.1:2375
     commands:
-      - docker build --build-arg DRONE_REPO_LINK=$${DRONE_REPO_LINK} --build-arg DRONE_REMOTE_URL=$${DRONE_REMOTE_URL} --build-arg DRONE_COMMIT_REF=$${DRONE_COMMIT_REF} --build-arg DRONE_COMMIT_SHA=$${DRONE_COMMIT_SHA} --build-arg DRONE_BUILD_CREATED=$${DRONE_BUILD_CREATED} --build-arg DRONE_BUILD_NUMBER=$${DRONE_BUILD_NUMBER} -t docker-taurus .
+      - docker build -t docker-taurus .
     when:
       branch: feature/drone
-      event: [push]
+      event: push
 
   image_to_quay:
-    image: docker:18.03
+    image: quay.io/ukhomeofficedigital/drone-docker
     secrets:
       - docker_password
     environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker login -u="ukhomeofficedigital+docker_taurus" -p=$${DOCKER_PASSWORD} quay.io
-      - docker tag docker-taurus quay.io/ukhomeofficedigital/docker-taurus:$${DRONE_COMMIT_SHA}
-      - docker tag docker-taurus quay.io/ukhomeofficedigital/docker-taurus:latest
-      - docker push quay.io/ukhomeofficedigital/docker-taurus:$${DRONE_COMMIT_SHA}
-      - docker push quay.io/ukhomeofficedigital/docker-taurus:latest
+      - DOCKER_USERNAME=ukhomeofficedigital+docker_taurus
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/docker-taurus
+    tags:
+      - ${DRONE_COMMIT_SHA}
+      - latest
     when:
-      event: [tag,push]
+      branch: master
+      event: push
 
-  tag_to_quay:
-    image: docker:18.03
+  image_to_quay:
+    image: quay.io/ukhomeofficedigital/drone-docker
     secrets:
       - docker_password
     environment:
-      - DOCKER_HOST=tcp://172.17.0.1:2375
-    commands:
-      - docker login -u="ukhomeofficedigital+docker_taurus" -p=$${DOCKER_PASSWORD} quay.io
-      - docker tag docker-taurus quay.io/ukhomeofficedigital/docker-taurus:$${DRONE_TAG}
-      - docker push quay.io/ukhomeofficedigital/docker-taurus:$${DRONE_TAG}
+      - DOCKER_USERNAME=ukhomeofficedigital+docker_taurus
+    registry: quay.io
+    repo: quay.io/ukhomeofficedigital/docker-taurus
+    tags:
+      - ${DRONE_TAG}
     when:
-      event: [tag]
+      event: tag
