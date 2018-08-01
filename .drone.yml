@@ -25,7 +25,7 @@ pipeline:
       branch: master
       event: push
 
-  image_to_quay:
+  tag_to_quay:
     image: quay.io/ukhomeofficedigital/drone-docker
     secrets:
       - docker_password
