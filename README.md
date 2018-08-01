@@ -1,6 +1,6 @@
 # Docker Gradle
 
-[![Build Status](https://travis-ci.org/UKHomeOffice/docker-taurus.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-taurus)
+[![Build Status](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus/status.svg)](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus) 
 
 Blazemeter Tuarus in a docker image, the version of the image / tag will match the version of Taurus and SemVer. 
 
