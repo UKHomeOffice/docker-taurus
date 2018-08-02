@@ -1,16 +1,20 @@
-FROM quay.io/ukhomeofficedigital/python:v3.4.3
-MAINTAINER Jon Shanks <jon.shanks@digital.homeoffice.gov.uk>
+FROM alpine:3.8
 
-ENV TAURUS_VERSION 1.7.2
+ENV TAURUS_VERSION 1.12.1
 
-RUN yum install yum-plugin-remove-with-leaves -y && \
-    yum install java-1.8.0-openjdk-headless.x86_64 python34-devel.x86_64 libxml2-devel.x86_64 \
-                libxslt-devel.x86_64 zlib.x86_64 gcc.x86_64 -y
+RUN apk --update add \
+    linux-headers \
+    openjdk8 \
+    python \
+    python-dev \
+    py-pip \
+    libc-dev \
+    libxml2-dev \
+    libxslt-dev \
+    zlib \
+    gcc
 
-RUN pip install bzt
-
-RUN yum remove python34-devel.x86_64 libxml2-devel.x86_64 libxslt-devel.x86_64 gcc.x86_64 --remove-leaves -y
-
+RUN pip install --upgrade pip bzt
 ADD 99-zinstallID.json /etc/bzt.d/
 ADD 90-artifacts-dir.json /etc/bzt.d/
 ADD 90-no-console.json /etc/bzt.d/
