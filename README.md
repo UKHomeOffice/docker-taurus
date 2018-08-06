@@ -2,9 +2,9 @@
 
 [![Build Status](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus/status.svg)](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus) 
 
-Blazemeter Tuarus in a docker image, the version of the image / tag will match the version of Taurus and SemVer. 
+Blazemeter Trus in a docker image, the version of the image / tag will match the version of Taurus and SemVer. 
 
-For more information on this please refer to: [Docker Tuarus](https://github.com/Blazemeter/taurus)
+For more information on this please refer to: [Docker Taurus](https://github.com/Blazemeter/taurus)
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ from that directory on the code
 
 ### Volumes
 
-* `/bzt` - This is where the blazmeter tests are mounted and is also the WORKDIR
+* `/bzt` - This is where the blazemeter tests are mounted and is also the WORKDIR
 
 ### Usage
 
