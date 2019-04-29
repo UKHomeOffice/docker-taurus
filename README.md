@@ -16,7 +16,8 @@ from that directory on the code
 
 ### Volumes
 
-* `/bzt` - This is where the blazmeter tests are mounted and is also the WORKDIR
+* `/bzt` - This is the work dir for blazmeter where the log and output are stored
+* `/bzt-config` - This is where the blazmeter tests are mounted 
 
 ### Usage
 ```
