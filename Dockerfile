@@ -23,14 +23,17 @@ RUN apk --update add \
     apk del build-dependencies
 
 
-
-VOLUME ["/bzt"]
-VOLUME ["/bzt-config"]
+RUN mkdir /bzt && chown 1000 /bzt
 WORKDIR /bzt
 
 USER 1000
 
 RUN bzt -o settings.default-executor=jmeter -o execution.scenario.requests.0=http://localhost/ \
         -o execution.iterations=1 -o execution.hold-for=1 -o execution.throughput=1
+
+
+VOLUME ["/bzt-config"]
+VOLUME ["/bzt"]
+
 
 CMD bzt -l bzt.log /bzt-config/*.yml
