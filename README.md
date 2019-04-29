@@ -1,10 +1,10 @@
-# Docker Gradle
+# Docker Taurus
 
 [![Build Status](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus/status.svg)](https://drone.acp.homeoffice.gov.uk/UKHomeOffice/docker-taurus) 
 
-Blazemeter Tuarus in a docker image, the version of the image / tag will match the version of Taurus and SemVer. 
+Blazemeter Taurus in a docker image, the version of the image / tag will match the version of Taurus and SemVer. 
 
-For more information on this please refer to: [Docker Tuarus](https://github.com/Blazemeter/taurus)
+For more information on this please refer to: [Docker Taurus](https://github.com/Blazemeter/taurus)
 
 ## Getting Started
 
@@ -14,17 +14,16 @@ for a service. It's to make sure that CI can operate in a complete containerised
 Blazemeter test yaml data is mounted into the container under /code where that becomes the WORKDIR and then bzt is run
 from that directory on the code
 
-### Environment Variables
-
-* `TAURUS_VERSION` - the version of Taurus BZT to pip install
-
 ### Volumes
 
 * `/bzt` - This is where the blazmeter tests are mounted and is also the WORKDIR
 
 ### Usage
-
-docker run -v "${PWD}":/bzt quay.io/ukhomeofficedigital/taurus:v0.8.3
+```
+mkdir ./tests
+mkdir ./work
+docker run  -v $(PWD)/tests:/bzt-config -v $(PWD)/work:/bzt quay.io/ukhomeofficedigital/docker-taurus
+```
 
 ## Contributing
 
