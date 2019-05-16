@@ -36,5 +36,7 @@ pipeline:
     repo: quay.io/ukhomeofficedigital/docker-taurus
     tags:
       - ${DRONE_TAG}
+      - ${DRONE_COMMIT_SHA}
+      - latest
     when:
       event: tag
