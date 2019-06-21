@@ -18,7 +18,7 @@ RUN apk --update add \
                  linux-headers \
                  libc-dev \
                  gcc && \
-    pip install --upgrade pip bzt && \
+    pip install --upgrade pip bzt virtualenv && \
     adduser -u 1000  -h /home/bzt -s /bin/ash -S taurus && \
     apk del build-dependencies
 
